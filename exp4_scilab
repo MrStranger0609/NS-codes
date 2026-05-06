@@ -1,0 +1,33 @@
+clear;
+clc;
+
+p = 3;
+q = 11;
+n = p * q;
+phi = (p - 1) * (q - 1);
+e = 7;
+d = 1;
+t = 1;
+P = 5;   // Plaintext
+
+disp("The plain text is =");
+disp(P);
+
+// Find d such that (e*d) mod phi = 1
+while t == 1
+    if modulo(e * d, phi) == 1 then
+        t = 0;
+    else
+        d = d + 1;
+    end
+end
+
+// Encryption
+c = modulo(P^e, n);
+disp("The Cipher text is =");
+disp(c);
+
+// Decryption
+P_decoded = modulo(c^d, n);
+disp("The decoded plain text is =");
+disp(P_decoded);
